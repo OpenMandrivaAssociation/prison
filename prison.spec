@@ -57,7 +57,6 @@ Development files for %name.
 #-------------------------------------------------------------------------------
 %prep
 %setup -qn %name
-#%patch0 -p0 -b .fix_cmake_for_both_arches
 
 %build
 %cmake_kde4
