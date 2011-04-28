@@ -34,7 +34,7 @@ Library for %name.
 
 %files -n %libname
 %defattr(-,root,root)
-%{_kde_libdir}/libprison.so.%{major}*
+%{_libdir}/libprison.so.%{major}*
 
 
 #-------------------------------------------------------------------------------
@@ -49,9 +49,9 @@ Development files for %name.
 
 %files -n %develname
 %defattr(-,root,root)
-%_kde_includedir/%name
-%{_kde_libdir}/libprison.so
-%{_kde_libdir}/cmake/Prison/PrisonConfig.cmake
+%{_includedir}/%name
+%{_libdir}/libprison.so
+%{_libdir}/cmake/Prison/PrisonConfig.cmake
 
 
 #-------------------------------------------------------------------------------
