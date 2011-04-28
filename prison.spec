@@ -59,7 +59,7 @@ Development files for %name.
 %setup -qn %name
 
 %build
-%cmake_kde4
+%cmake_qt4
 %make
 
 %install
