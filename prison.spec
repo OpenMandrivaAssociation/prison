@@ -6,12 +6,11 @@
 Name:		prison
 Group:		Development/C++
 Summary:	Prison is a Qt based barcode abstraction layer/library
-Version:	0.0.0
+Version:	1.0
 Release:	%mkrel 1
-URL:		https://projects.kde.org/projects/kdesupport/prison
-License: 	GPLv2
-# Use git repo or create tarball wget -c http://anongit.kde.org/prison/%name-latest.tar.gz
-Source0:	http://anongit.kde.org/prison/%name.tar.bz2
+License: 	MIT
+URL:            https://projects.kde.org/projects/kdesupport/prison
+Source0:        ftp://ftp.kde.org/pub/kde/stable/prison/1.0/src/%{name}-%{version}.tar.gz
 BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
@@ -19,44 +18,48 @@ BuildRequires:	qrencode-devel
 BuildRequires:	libdmtx-devel
 
 %description
-Prison is a Qt based barcode abstraction layer/library and provides uniform access
-to generation of barcodes with data.
-
-
+Prison is a Qt based barcode abstraction layer/library and provides
+uniform access to generation of barcodes with data.
 
 #-------------------------------------------------------------------------------
 %package -n %libname
-Group:          System/Libraries
 Summary:	Prison library
+Group:          System/Libraries
 
 %description -n %libname
 Library for %name.
+
+Prison is a Qt based barcode abstraction layer/library and provides
+uniform access to generation of barcodes with data.
 
 %files -n %libname
 %defattr(-,root,root)
 %{_libdir}/libprison.so.%{major}*
 
-
 #-------------------------------------------------------------------------------
 %package -n %develname
-Group:		Development/C++
 Summary:	Prison development files
-Requires:	%libname = %version-%release
-Provides:	%{name}-devel = %version-%release
+Group:		Development/C++
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Provides:	lib%{name}-devel = %{version}-%{release}
 
 %description -n %develname
-Development files for %name.
+Development files for applications that use %{name}.
+
+Prison is a Qt based barcode abstraction layer/library and provides
+uniform access to generation of barcodes with data.
 
 %files -n %develname
 %defattr(-,root,root)
+%doc LICENSE
 %{_includedir}/%name
 %{_libdir}/libprison.so
-%{_libdir}/cmake/Prison/PrisonConfig.cmake
-
+%{_libdir}/cmake/Prison
 
 #-------------------------------------------------------------------------------
 %prep
-%setup -qn %name
+%setup -q
 
 %build
 %cmake_qt4
