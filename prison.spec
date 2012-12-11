@@ -74,3 +74,16 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}
 
 
+
+
+%changelog
+* Thu Jun 30 2011 José Melo <ze@mandriva.org> 1.0-1mdv2011.0
++ Revision: 688340
+- version 1.0
+- fix descriptions and license
+- minor fixes
+
+* Thu Apr 28 2011 José Melo <ze@mandriva.org> 0.0.0-1
++ Revision: 660105
+- import prison
+
