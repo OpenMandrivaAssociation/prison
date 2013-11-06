@@ -1,63 +1,53 @@
 %define major 0
-%define libname %mklibname %name %major
-%define develname %mklibname %name -d
+%define libname %mklibname %{name} %{major}
+%define devname %mklibname %{name} -d
 
 
+Summary:	Prison is a Qt based barcode abstraction layer/library
 Name:		prison
 Group:		Development/C++
-Summary:	Prison is a Qt based barcode abstraction layer/library
 Version:	1.0
-Release:	%mkrel 1
-License: 	MIT
-URL:            https://projects.kde.org/projects/kdesupport/prison
-Source0:        ftp://ftp.kde.org/pub/kde/stable/prison/1.0/src/%{name}-%{version}.tar.gz
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Release:	1
+License:	MIT
+Url:		https://projects.kde.org/projects/kdesupport/prison
+Source0:	ftp://ftp.kde.org/pub/kde/stable/prison/1.0/src/%{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	qt4-devel
-BuildRequires:	qrencode-devel
-BuildRequires:	libdmtx-devel
+BuildRequires:	pkgconfig(libqrencode)
+BuildRequires:	pkgconfig(libdmtx)
 
 %description
 Prison is a Qt based barcode abstraction layer/library and provides
 uniform access to generation of barcodes with data.
 
-#-------------------------------------------------------------------------------
-%package -n %libname
+%package -n %{libname}
 Summary:	Prison library
-Group:          System/Libraries
+Group:		System/Libraries
 
-%description -n %libname
-Library for %name.
+%description -n %{libname}
+Library for %{name}.
 
 Prison is a Qt based barcode abstraction layer/library and provides
 uniform access to generation of barcodes with data.
 
-%files -n %libname
-%defattr(-,root,root)
+%files -n %{libname}
 %{_libdir}/libprison.so.%{major}*
 
-#-------------------------------------------------------------------------------
-%package -n %develname
+%package -n %{devname}
 Summary:	Prison development files
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
 
-%description -n %develname
+%description -n %{devname}
 Development files for applications that use %{name}.
 
-Prison is a Qt based barcode abstraction layer/library and provides
-uniform access to generation of barcodes with data.
-
-%files -n %develname
-%defattr(-,root,root)
+%files -n %{devname}
 %doc LICENSE
-%{_includedir}/%name
+%{_includedir}/%{name}
 %{_libdir}/libprison.so
 %{_libdir}/cmake/Prison
 
-#-------------------------------------------------------------------------------
 %prep
 %setup -q
 
@@ -66,24 +56,5 @@ uniform access to generation of barcodes with data.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std -C build
-
-
-%clean
-rm -rf %{buildroot}
-
-
-
-
-%changelog
-* Thu Jun 30 2011 José Melo <ze@mandriva.org> 1.0-1mdv2011.0
-+ Revision: 688340
-- version 1.0
-- fix descriptions and license
-- minor fixes
-
-* Thu Apr 28 2011 José Melo <ze@mandriva.org> 0.0.0-1
-+ Revision: 660105
-- import prison
 
