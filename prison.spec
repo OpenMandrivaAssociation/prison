@@ -1,5 +1,5 @@
 %bcond_without qt4
-%bcond_without qt5
+%bcond_with qt5
 
 %define major 0
 %define qt5major 1
@@ -12,7 +12,7 @@ Summary:	Prison is a Qt based barcode abstraction layer/library
 Name:		prison
 Group:		Development/C++
 Version:	1.2.0
-Release:	%{?git:0.%{git}.}2
+Release:	%{?git:0.%{git}.}3
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 %if %git
