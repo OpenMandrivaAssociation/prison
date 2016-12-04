@@ -1,25 +1,30 @@
-%define major 0
-%define libname %mklibname %{name} %{major}
-%define devname %mklibname %{name} -d
-%define git 20141220
+%define major 5
+%define libname %mklibname KF5Prison %{major}
+%define devname %mklibname KF5Prison -d
+%define git %{nil}
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	Prison is a Qt based barcode abstraction layer/library
 Name:		prison
 Group:		Development/C++
-Version:	1.2.0
-Release:	%{?git:0.%{git}.}1
+Version:	5.29.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
-%if %git
+%if 0%git
 # git://anongit.kde.org/prison
 Source0:	%{name}-%{git}.tar.xz
+Release:	0.%{git}.1
 %else
-Source0:	ftp://ftp.kde.org/pub/kde/stable/prison/1.1/src/%{name}-%{version}.tar.xz
+Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
+Release:	1
 %endif
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(libqrencode)
 BuildRequires:	pkgconfig(libdmtx)
-BuildRequires:	qt4-devel
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5Widgets)
+BuildRequires:	cmake(Qt5Test)
 
 %description
 Prison is a Qt based barcode abstraction layer/library and provides
@@ -36,7 +41,7 @@ Prison is a Qt based barcode abstraction layer/library and provides
 uniform access to generation of barcodes with data.
 
 %files -n %{libname}
-%{_libdir}/libprison.so.%{major}*
+%{_libdir}/libKF5Prison.so.%{major}*
 
 %package -n %{devname}
 Summary:	Prison development files
@@ -49,17 +54,19 @@ Development files for applications that use %{name}.
 
 %files -n %{devname}
 %doc LICENSE
-%{_includedir}/%{name}
-%{_libdir}/libprison.so
-%{_libdir}/cmake/Prison
+%{_includedir}/KF5/%{name}
+%{_includedir}/KF5/%{name}_version.h
+%{_libdir}/libKF5Prison.so
+%{_libdir}/cmake/KF5Prison
+%{_libdir}/qt5/mkspecs/modules/qt_Prison.pri
 
 %prep
 %setup -q
 %apply_patches
+%cmake_kde5
 
 %build
-%cmake_qt4
-%make
+%ninja -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
