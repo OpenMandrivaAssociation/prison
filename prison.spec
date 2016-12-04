@@ -19,6 +19,8 @@ Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d.
 Release:	1
 %endif
 BuildRequires:	cmake
+BuildRequires:	cmake(ECM)
+BuildRequires:	ninja
 BuildRequires:	pkgconfig(libqrencode)
 BuildRequires:	pkgconfig(libdmtx)
 BuildRequires:	cmake(Qt5Core)
