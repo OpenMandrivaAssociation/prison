@@ -7,7 +7,7 @@
 Summary:	Prison is a Qt based barcode abstraction layer/library
 Name:		prison
 Group:		Development/C++
-Version:	5.43.0
+Version:	5.44.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 %if 0%git
@@ -45,6 +45,7 @@ uniform access to generation of barcodes with data.
 %files -n %{libname}
 %{_sysconfdir}/xdg/prison.categories
 %{_libdir}/libKF5Prison.so.%{major}*
+%{_libdir}/qt5/qml/org/kde/prison
 
 %package -n %{devname}
 Summary:	Prison development files
