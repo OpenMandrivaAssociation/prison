@@ -16,7 +16,7 @@ Source0:	%{name}-%{git}.tar.xz
 Release:	1.%{git}.1
 %else
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
