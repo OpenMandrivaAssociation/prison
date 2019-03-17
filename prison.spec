@@ -1,7 +1,6 @@
 %define major 5
 %define libname %mklibname KF5Prison %{major}
 %define devname %mklibname KF5Prison -d
-%define git %{nil}
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 Summary:	Prison is a Qt based barcode abstraction layer/library
@@ -10,14 +9,8 @@ Group:		Development/C++
 Version:	5.56.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
-%if 0%git
-# git://anongit.kde.org/prison
-Source0:	%{name}-%{git}.tar.xz
-Release:	1.%{git}.1
-%else
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	1
-%endif
+Release:	2
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	ninja
