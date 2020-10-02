@@ -10,7 +10,7 @@ Version:	5.74.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	2
+Release:	3
 BuildRequires:	cmake
 BuildRequires:	cmake(ECM)
 BuildRequires:	ninja
