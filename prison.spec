@@ -44,6 +44,8 @@ uniform access to generation of barcodes with data.
 %{_libdir}/libKF5Prison.so.%{major}*
 %{_libdir}/qt5/qml/org/kde/prison
 
+%libpackage KF5PrisonScanner %{major}
+
 %package -n %{devname}
 Summary:	Prison development files
 Group:		Development/C++
@@ -55,17 +57,18 @@ Development files for applications that use %{name}.
 
 %files -n %{devname}
 %{_includedir}/KF5/Prison
-%{_libdir}/libKF5Prison.so
+%{_includedir}/KF5/PrisonScanner
+%{_libdir}/libKF5Prison*.so
 %{_libdir}/cmake/KF5Prison
 %{_libdir}/qt5/mkspecs/modules/qt_Prison.pri
 
 %package -n %{name}-devel-docs
-Summary: Developer documentation for %{name} for use with Qt Assistant
-Group: Documentation
-Suggests: %{devname} = %{EVRD}
+Summary:	Developer documentation for %{name} for use with Qt Assistant
+Group:		Documentation
+Suggests:	%{devname} = %{EVRD}
 
 %description -n %{name}-devel-docs
-Developer documentation for %{name} for use with Qt Assistant
+Developer documentation for %{name} for use with Qt Assistant.
 
 %files -n %{name}-devel-docs
 %{_docdir}/qt5/*.{tags,qch}
