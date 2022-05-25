@@ -10,10 +10,9 @@ Version:	5.94.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	1
-BuildRequires:	cmake
+Release:	2
 BuildRequires:	cmake(ECM)
-BuildRequires:	ninja
+BuildRequires:	cmake(Qt5Multimedia)
 BuildRequires:	pkgconfig(libqrencode)
 BuildRequires:	pkgconfig(libdmtx)
 BuildRequires:	cmake(Qt5Core)
