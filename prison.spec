@@ -10,7 +10,8 @@ Version:	5.96.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	1
+Patch0:		https://invent.kde.org/frameworks/prison/-/commit/74e34fa35a59098db7c4358b788ad3ac0a5745f7.patch
+Release:	2
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Multimedia)
 BuildRequires:	pkgconfig(libqrencode)
