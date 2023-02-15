@@ -10,7 +10,7 @@ Version:	5.103.0
 License:	MIT
 Url:		https://projects.kde.org/projects/kdesupport/prison
 Source0:	http://download.kde.org/%{stable}/frameworks/%(echo %{version} |cut -d. -f1-2)/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(Qt5Multimedia)
 BuildRequires:	pkgconfig(libqrencode)
@@ -20,6 +20,7 @@ BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5Widgets)
 BuildRequires:	cmake(Qt5Test)
 BuildRequires:	cmake(ZXing)
+BuildRequires:	pkgconfig(libdmtx)
 # For QCH format docs
 BuildRequires: doxygen
 BuildRequires: qt5-assistant
